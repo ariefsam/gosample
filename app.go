@@ -2,14 +2,16 @@ package main
 
 import (
 	"flag"
-	"github.com/google/gops/agent"
 	"log"
 	"net/http"
 
-	"github.com/prometheus/client_golang/prometheus/promhttp"
+	//"github.com/google/gops/agent"
 
-	"github.com/tokopedia/gosample/hello"
-	"github.com/tokopedia/logging/tracer"
+	//"github.com/prometheus/client_golang/prometheus/promhttp"
+
+	"bigproject/hello"
+	"bigproject/table"
+	//"github.com/tokopedia/logging/tracer"
 	"gopkg.in/tokopedia/grace.v1"
 	"gopkg.in/tokopedia/logging.v1"
 )
@@ -22,19 +24,23 @@ func main() {
 	debug := logging.Debug.Println
 
 	debug("app started") // message will not appear unless run with -debug switch
-
-	if err := agent.Listen(&agent.Options{}); err != nil {
-		log.Fatal(err)
-	}
+	/*
+		if err := agent.Listen(&agent.Options{}); err != nil {
+			log.Fatal(err)
+		}*/
 
 	hwm := hello.NewHelloWorldModule()
 
-	http.Handle("/metrics", promhttp.Handler())
+	//http.Handle("/metrics", promhttp.Handler())
 
 	http.HandleFunc("/hello", hwm.SayHelloWorld)
-	go logging.StatsLog()
+	//go logging.StatsLog()
 
-	tracer.Init(&tracer.Config{Port: 8700, Enabled: true})
+	//tracer.Init(&tracer.Config{Port: 8700, Enabled: true})
+
+	//Arief Hidayatulloh start coding here
+	table := table.NewTableModule()
+	http.HandleFunc("/table", table.ShowData)
 
 	log.Fatal(grace.Serve(":9000", nil))
 }
