@@ -9,8 +9,8 @@ import (
 
 	//"github.com/prometheus/client_golang/prometheus/promhttp"
 
-	"bigproject/hello"
-	"bigproject/table"
+	"github.com/ariefsam/gosample/hello"
+	"github.com/ariefsam/gosample/table"
 	//"github.com/tokopedia/logging/tracer"
 	"gopkg.in/tokopedia/grace.v1"
 	"gopkg.in/tokopedia/logging.v1"

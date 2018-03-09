@@ -16,6 +16,8 @@
                         <tr>
                             <th>ID</th>
                             <th>Name</th>
+                            <th>Email</th>
+                            <th>Birth Date</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -23,6 +25,8 @@
                         <tr>
                             <td>{{ $user.ID }}</td>
                             <td>{{ $user.Name }}</td>
+                            <td>{{ $user.Email }}</td>
+                            <td>{{ $user.BirthDate}}</td>
                         </tr>
                         {{ end }}
                     </tbody>
@@ -38,8 +42,14 @@
                 <div class="col-sm">
                         <button class="btn btn-success" type="submit">Submit</button>
                 </div>
+                
             </div>
             </form>
+            <div class="row">
+                <div class="col-sm">
+                    Visitor: {{.Visitor}}
+                </div>
+            </div>
             
         </div>
         <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>

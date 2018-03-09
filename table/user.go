@@ -33,7 +33,7 @@ func SearchUser(module *TableModule) []User {
 
 func SearchUserByName(module *TableModule, searchName string) []User {
 	users := []User{}
-	err := module.db.Select(&users, "SELECT user_id, full_name, msisdn, user_email, birth_date, create_time, update_time, COALESCE(EXTRACT(YEAR from AGE(birth_date)),0) AS user_age FROM WS_USER LIMIT 10;")
+	err := module.db.Select(&users, "SELECT user_id, full_name, msisdn, user_email, birth_date, create_time, update_time, COALESCE(EXTRACT(YEAR from AGE(birth_date)),0) AS user_age FROM WS_USER WHERE full_name like $1 LIMIT 10;", searchName)
 	if err != nil {
 		panic(err)
 	}
